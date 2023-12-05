@@ -56,3 +56,39 @@ model.onchange = function () {
     filterSelect(trim, modelCategory);
   }
 };
+
+// Functions
+function showAll(selectList) {
+  let options = selectList.options;
+  let optionLength = options.length;
+
+  for (let i = 0; i < options.length; i++) {
+    options[i].style.display = "block";
+  }
+}
+
+function filterSelect(selectList, category) {
+  let options = selectList.options;
+  let optionLength = options.length;
+
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].className === category) {
+      options[i].style.display = "block";
+    } else {
+      options[i].style.display = "none";
+    }
+  }
+}
+
+selectVehicle.onclick = function () {
+  let makeIndex = make.selectedIndex;
+  let makeCategory = make.options[makeIndex].text;
+
+  let modelIndex = model.selectedIndex;
+  let modelCategory = model.options[modelIndex].text;
+
+  let trimIndex = trim.selectedIndex;
+  let trimCategory = trim.options[trimIndex].text;
+
+  vehicle.textContent = makeCategory + " " + modelCategory + " " + trimCategory;
+};
