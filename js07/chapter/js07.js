@@ -102,8 +102,6 @@ document.getElementById("getFile").onchange = function () {
       word.style.fontSize = unique[i][1] / maxCount + "em";
       cloudBox.appendChild(word);
     }
-
-    // console.log(words);
   }
 };
 
