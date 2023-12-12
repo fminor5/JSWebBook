@@ -25,4 +25,27 @@ let cards = document.querySelectorAll("div#hand span");
 let cardsLeft = document.getElementById("cardsLeft");
 let deck = [];
 
-document.getElementById("deal").onclick = function () {};
+document.getElementById("deal").onclick = function () {
+  function newDeck() {
+    deck = deckStr.split(",");
+    //     console.log(deck);
+
+    deck.sort(shuffle); //4.b
+    //     console.log(deck);
+
+    function shuffle(a, b) {
+      //4.c missing the use of the parameters
+      return 0.5 - Math.random();
+    }
+  }
+
+  for (let i = 0; i < cards.length; i++) {
+    if (deck.length === 0) {
+      //5
+      newDeck(); //5.a
+    } else {
+      cards[i].textContent = deck.pop(); //5.b
+      cardsLeft.textContent = deck.length; //5.c
+    }
+  }
+};
