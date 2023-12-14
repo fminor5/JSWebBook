@@ -35,6 +35,7 @@ let customers = [
   "David Johnson",
   "Wesley Cho",
 ];
+console.log(customers);
 
 let customerName = document.getElementById("customerName");
 let customerList = document.getElementById("customerList");
@@ -44,7 +45,7 @@ let searchButton = document.getElementById("searchButton");
 let removeButton = document.getElementById("removeButton");
 let topButton = document.getElementById("topButton");
 
-let status = document.getElementById("status");
+let statusM = document.getElementById("status");
 
 generateCustomerList();
 
@@ -57,3 +58,42 @@ function generateCustomerList() {
     customerList.appendChild(customerItem);
   }
 }
+
+// Adding a customer to the end of the array.
+addButton.onclick = function () {
+  customers.push(customerName.value); //3a
+  generateCustomerList(); //3b
+  statusM.textContent = `${customerName.value} added to the end of the queue`; //3c
+};
+
+// Adding the functionality to the search button.
+searchButton.onclick = function () {
+  let place = customers.indexOf(customerName.value) + 1; //4a
+
+  if (place === 0) {
+    //4b
+    statusM.textContent = `${customerName.value} is not found in the queue`;
+  } else {
+    statusM.textContent = `${customerName.value} found in position ${place} of the queue.`;
+  }
+};
+
+// Adding the functionality for the remove button.
+removeButton.onclick = function () {
+  let index = customers.indexOf(customerName.value); //5a
+
+  if (index != -1) {
+    customers.splice(index, 1); //5bi
+    statusM.textContent = `${customerName.value} removed from the queue.`; //5bii
+    generateCustomerList();
+  } else {
+    statusM.textContent = `${customerName.value} is not found in the queue.`; //5biii
+  }
+};
+
+// Adding functionality for the topButton
+topButton.onclick = function () {
+  let topCustomer = customers.shift(); //6a
+  statusM.textContent = `${topCustomer} from the queue.`;
+  generateCustomerList();
+};
