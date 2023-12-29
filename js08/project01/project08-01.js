@@ -17,33 +17,33 @@ function Timer(min, sec) {
 }
 
 //S4
-Timer.prototype.runPause = function (minBox, secBox) {
+Timer.prototype.runPause = function (Timer, minBox, secBox) {
   //S5
-  if (this.timeID) {
-    window.clearInterval(this.timeID);
-    this.timeID = null;
+  if (Timer.timeID) {
+    window.clearInterval(Timer.timeID);
+    Timer.timeID = null;
   } else {
-    this.timeID = window.setInterval(countdown(), 1000);
-    //     Timer.timeID = setInterval(); // check this one
+    Timer.timeID = window.setInterval(countdown, 1000);
+    //     Timer.timeID = setInterval(); // check Timer one
   }
 
   //S6
   function countdown() {
     //s6a
-    if (this.seconds > 0) {
-      this.seconds--;
-    } else if (this.minutes > 0) {
+    if (Timer.seconds > 0) {
+      Timer.seconds--;
+    } else if (Timer.minutes > 0) {
       //s6b
-      this.minutes--;
-      this.seconds = 59;
+      Timer.minutes--;
+      Timer.seconds = 59;
     } else {
       //s6c
-      window.clearInterval(this.timeID);
-      this.timeID = null;
+      window.clearInterval(Timer.timeID);
+      Timer.timeID = null;
     }
     //s6d
-    minBox.value = this.minutes;
-    secBox.value = this.seconds;
+    minBox.value = Timer.minutes;
+    secBox.value = Timer.seconds;
   }
 };
 
