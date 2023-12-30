@@ -19,16 +19,22 @@ let cart = {
 
 //s4 Creating a constructor function Pizza
 function Pizza(size, crust) {
-  this.size = size;
-  this.crust = crust;
+  this.size = "";
+  this.crust = "";
   this.toppings = [];
 }
 
 //s5 Creating a constructor function Topping
 function Topping(name, side) {
   this.name;
-  this.crust;
+  this.side;
 }
+
+// ***** This one is missing in the book *****
+//adds toppings to the toppings array
+Pizza.prototype.addTopping = function (topping) {
+  this.toppings.push(topping);
+};
 
 //s6 Adding the addToCart() method to the Pizza prototype.
 Pizza.prototype.addToCart = function (cart) {
@@ -38,14 +44,16 @@ Pizza.prototype.addToCart = function (cart) {
 //s7 Adding the summarize() method to the Pizza prototype.
 Pizza.prototype.summarize = function () {
   //s7a Adding a variable
-  let summary = "Pizza";
+  let summary = "Pizza: ";
   //s7b adding the values
-  summary = this.size + " " + this.crust;
+  summary += this.size + " " + this.crust;
   //s7c Running a for-loop and for each topping we add the name and sice.
   for (let i = 0; i < this.toppings.length; i++) {
-    summary = this.toppings[i].name;
-    summary = this.toppings[i].side;
+    //   //***** Check this part *****/
+    summary += " " + this.toppings[i].name;
+    summary += " " + this.toppings[i].side;
   }
+
   //s7d Returning the value
   return summary;
 };
@@ -103,6 +111,27 @@ function drawPizza() {
 // Function to build the pizza
 function buildPizza() {
   let checkedToppings = document.querySelectorAll("input.topping:checked");
+
+  //s8a Creating an instance of the pizza object
+  let myPizza = new Pizza();
+  //s8b Setting values
+  pizzaSizeBox.value = myPizza.size;
+  pizzaCrustBox.value = myPizza.crust;
+  // pizzaSizeBox.size = myPizza.value;
+  // pizzaCrustBox.crust = myPizza.value;
+  //s8c Using a for-loop to add the selected items
+  for (let i = 0; i < checkedToppings.length; i++) {
+    //s8ci Creating an instance of Topping
+    let myTopping = new Topping();
+    //s8cii Setting values of name and side
+    myTopping.name = checkedToppings[i].name;
+    myTopping.side = checkedToppings[i].value;
+    //s8ciii Applying the addTopping method to myPizza
+    myPizza.addTopping(myTopping);
+  }
+
+  //s8d returning the value
+  return myPizza;
 }
 
 // Function to add the built pizza to the shopping cart
