@@ -4,9 +4,6 @@
       Chapter case
       
       Eating Well in Season Retrieving Data from Local Storage
-      Author: 
-      Date:   
       
       Filename: js09c.js
  */
-

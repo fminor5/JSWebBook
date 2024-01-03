@@ -4,8 +4,6 @@
       Chapter case
       
       Eating Well in Season 
-      Author: 
-      Date:   
       
       Filename: js09b.js
  */
