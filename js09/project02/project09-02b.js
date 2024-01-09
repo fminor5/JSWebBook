@@ -19,6 +19,8 @@ let region = document.getElementById("region");
 let miles = document.getElementById("miles");
 let comments = document.getElementById("comments");
 
+//s7 & s8 Retrieving the values from the session storage keys p392
+// When you are using the keys remember to use the quotation marks.
 riderName.textContent = sessionStorage.getItem("riderName");
 ageGroup.textContent = sessionStorage.getItem("ageGroup");
 bikeOption.textContent = sessionStorage.getItem("bikeOption");
