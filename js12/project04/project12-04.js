@@ -24,7 +24,7 @@ $(() => {
         1000
       );
       //s5b
-      slideImage -= 1;
+      slideNumber--;
       //s5c
       let currentSlide = $("img.slidesImages");
       //s5d
@@ -48,15 +48,15 @@ $(() => {
         1000
       );
       //s6d
-      slideImage += 1;
+      slideNumber++;
       let currentSlide = $("img.slidesImages");
       let slideCaption = $(currentSlide).attr("alt");
       changeCaption(slideCaption);
     }
   });
+  //s7
 });
 
-//s7
 function changeCaption(captionText) {
   $("div#caption")
     .effect(
@@ -71,8 +71,9 @@ function changeCaption(captionText) {
       }
     )
     .effect(
-      "show",
+      "blind",
       {
+        mode: "show",
         direction: "left",
       },
       500
